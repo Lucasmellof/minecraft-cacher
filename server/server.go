@@ -56,6 +56,7 @@ func InitServer() {
 
 	addr := ":" + helpers.GetEnv("PORT", "3001")
 	log.Printf("Starting server on %s", addr)
+	log.Printf("Server started.")
 	r.Run(addr)
 }
 
