@@ -23,3 +23,6 @@ go.work
 
 
 .idea/
+
+app-amd64
+app-arm64

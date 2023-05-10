@@ -19,10 +19,11 @@ func redisConn() *redis.Client {
 	if redisConnection == nil {
 		fmt.Println("Connecting to redis")
 		redisConnection = redis.NewClient(&redis.Options{
-			Addr:     helpers.GetEnv("REDIS_URL", "localhost:6379"),
-			Password: helpers.GetEnv("REDIS_PASSWORD", ""),
-			Username: helpers.GetEnv("REDIS_USERNAME", ""),
-			DB:       0,
+			Addr:        helpers.GetEnv("REDIS_URL", "localhost:6379"),
+			Password:    helpers.GetEnv("REDIS_PASSWORD", ""),
+			Username:    helpers.GetEnv("REDIS_USERNAME", ""),
+			DB:          0,
+			DialTimeout: 3,
 		})
 	}
 

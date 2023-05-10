@@ -33,16 +33,34 @@ func InitServer() {
 			"message": "pong",
 		})
 	})
-	r.GET("/uuid/:username", func(c *gin.Context) {
-		username := c.Params.ByName("username")
-		writeJsonResponse(c, UsernameToUuid(username))
-	})
-	r.POST("/nicks", func(c *gin.Context) {
+
+	/*
+		profiles
+		POST /profiles
+		Request: ["LucasTSu"]
+		Response: [
+			{
+				"id": "5f0cd06ed0e243a3a79e32feae4b6648",
+				"name": "LucasTSu"
+			}
+		]
+	*/
+	r.POST("/profiles", func(c *gin.Context) {
 		resp, err := ioutil.ReadAll(c.Request.Body)
 		if err != nil {
 			log.Println(err)
 		}
 		writeJsonResponse(c, UsernamesToUuids(resp))
+	})
+
+	r.GET("/uuid/:username", func(c *gin.Context) {
+		username := c.Params.ByName("username")
+		writeJsonResponse(c, UsernameToUuid(username))
+	})
+
+	r.GET("/username/:uuid", func(c *gin.Context) {
+		uuid := c.Params.ByName("uuid")
+		writeJsonResponse(c, UuidToUsername(uuid))
 	})
 
 	r.GET("/profile/:uuid", func(c *gin.Context) {

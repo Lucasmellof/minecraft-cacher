@@ -23,8 +23,9 @@ func UsernamesToUuids(jsonData []byte) model.MojangResponse {
 	return mojangPost(URL, jsonData)
 }
 
-func UuidToUsername(uuid string, action string) model.MojangResponse {
-	URL := API_URL + "/user/profiles/" + uuid + "/" + action
+func UuidToUsername(uuid string) model.MojangResponse {
+	URL := API_URL + "/user/profile/" + uuid
+	fmt.Println(URL)
 	return mojangGet(URL)
 }
 
