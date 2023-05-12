@@ -26,3 +26,4 @@ go.work
 
 app-amd64
 app-arm64
+app

@@ -8,12 +8,12 @@ import (
 	"log"
 )
 
-var VERSION = "0.0.1"
+var VERSION = "0.0.2"
 
 func InitServer() {
-	log.Printf("Starting MojangCacher developed by Lucasmellof.")
-	log.Printf("https://github.com/Lucasmellof")
-	log.Printf("Version: %s", VERSION)
+	log.Printf("⌚  MojangCacher developed by Lucasmellof.")
+	log.Printf("📦  Version: %s", VERSION)
+	log.Printf("🔗  GitHub: https://github.com/Lucasmellof")
 
 	gin.SetMode(gin.ReleaseMode)
 
@@ -73,8 +73,8 @@ func InitServer() {
 	})
 
 	addr := ":" + helpers.GetEnv("PORT", "3001")
-	log.Printf("Starting server on %s", addr)
-	log.Printf("Server started.")
+	log.Printf("⚡  Starting server on %s", addr)
+	log.Printf("🚀  Server ready")
 	r.Run(addr)
 }
 
