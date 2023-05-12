@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/lucasmellof/mojangcache/helpers"
 	"github.com/lucasmellof/mojangcache/model"
 	"github.com/redis/go-redis/v9"
 	"log"
@@ -18,10 +17,15 @@ var (
 func redisConn() *redis.Client {
 	if redisConnection == nil {
 		fmt.Println("Connecting to redis")
+		config, err := getConfig()
+		if err != nil {
+			fmt.Printf("Error on get config: %s", err)
+			return nil
+		}
 		redisConnection = redis.NewClient(&redis.Options{
-			Addr:        helpers.GetEnv("REDIS_URL", "localhost:6379"),
-			Password:    helpers.GetEnv("REDIS_PASSWORD", ""),
-			Username:    helpers.GetEnv("REDIS_USERNAME", ""),
+			Addr:        config.Url,
+			Password:    config.Password,
+			Username:    config.Username,
 			DB:          0,
 			DialTimeout: 3,
 		})
