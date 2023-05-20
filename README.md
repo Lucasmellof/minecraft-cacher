@@ -13,7 +13,7 @@
 
 * Clone this repo.
 * Build code using `go build -o app.exe .`, to build for different platforms use
-  * Powershell: ` $env:GOOS="linux";$env:GOARCH="amd64"; go build -o app .`
+  * Powershell: `$env:GOOS="linux";$env:GOARCH="amd64"; go build -o app .`
   * Bash: `GOOS="linux" GOARCH="amd64" go build -o app .`
   * Check available platforms using: `go tool dist list`
 * Run executable. 
