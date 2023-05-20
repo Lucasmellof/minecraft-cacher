@@ -6,6 +6,7 @@ import (
 )
 
 type Config struct {
+	Port	 string
 	Url      string
 	Password string
 	Username string
@@ -19,5 +20,5 @@ func getConfig() (*Config, error) {
 		return nil, err
 	}
 
-	return &Config{Url: viper.GetString("REDIS_URL"), Password: viper.GetString("REDIS_PASSWORD"), Username: viper.GetString("REDIS_USERNAME")}, nil
+	return &Config{Port: viper.GetString("PORT"), Url: viper.GetString("REDIS_URL"), Password: viper.GetString("REDIS_PASSWORD"), Username: viper.GetString("REDIS_USERNAME")}, nil
 }

@@ -2,7 +2,6 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/lucasmellof/mojangcache/helpers"
 	"github.com/lucasmellof/mojangcache/model"
 	"io/ioutil"
 	"log"
@@ -72,7 +71,14 @@ func InitServer() {
 		writeJsonResponse(c, UuidToProfile(uuid, unsigned))
 	})
 
-	addr := ":" + helpers.GetEnv("PORT", "3001")
+	config, err := getConfig()
+
+	if err != nil {
+		log.Printf("❌  Error loading config: %s", err.Error())
+		return
+	}
+
+	addr := ":" + config.Port
 	log.Printf("⚡  Starting server on %s", addr)
 	log.Printf("🚀  Server ready")
 	r.Run(addr)
